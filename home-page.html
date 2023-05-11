@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+<body>
+        <ul id="ulID">
+            <li id="Battle"><a href="battle.html">Battle</a></li>
+            <li style="margin-left: 40vw;">Organic Chemistry</li>
+            <li id="name2">
+            </li>
+        </ul>
+    <div class="v-container">
+        <h2>Available Videos</h2>
+        <div class="v-container-container">
+            <div>
+                <iframe 
+                    width="400" 
+                    height="400" 
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                </iframe>
+            </div>
+            <div>
+                <iframe 
+                    width="600" 
+                    height="400" 
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                </iframe>
+            </div>
+            <div>
+                <iframe 
+                    width="600" 
+                    height="400" 
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                </iframe>
+            </div>
+            <div>
+                <iframe 
+                    width="600" 
+                    height="400" 
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById("name2").innerHTML = localStorage.getItem('name') + ": "+localStorage.getItem('points');
+    if(localStorage.getItem("name")==null){
+        window.location.href = "index.html";
+    }
+</script>
+</html>

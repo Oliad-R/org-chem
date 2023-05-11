@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Organic Chemistry</title>
+</head>
+<body>
+    <div class="t-container">
+    <h1 class="t">Organic Chemistry</h1>
+    <form action="" method="post" class="form-prompt" id="fp">
+    <div>
+        <h2 class="prompt-name">What's your name?</h2>
+        <input autocomplete="name" id="name1" type="text" style="font-family: 'Mona-Sans Light';">
+    </div>
+</form>
+    </div>
+</body>
+
+<script>
+    const form = document.getElementById("fp");
+    
+    if(localStorage.getItem("name")==null){
+        var name = localStorage.setItem('name', '');
+        var points = localStorage.setItem('points', 0);
+    }
+    else {
+        console.log(localStorage.getItem('name'));
+        window.location.href = "home-page.html";
+    }
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        localStorage.setItem('name', document.getElementById('name1').value);
+        localStorage.setItem('points',0);
+        console.log(localStorage.getItem('name'));
+        window.location.href = "home-page.html";
+    })
+</script>
+</html>

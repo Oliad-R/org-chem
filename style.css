@@ -1,0 +1,156 @@
+*{
+    background-color: #092A65;
+    font-family: 'Mona-Sans';
+    color: #fff;
+    padding: 0;
+    margin: 0;
+}
+
+.t {
+    animation: title 4s;
+    opacity: 0%;
+    transform: translateX(10vw);
+    transform: translateY(-7vh);
+    font-size: 5vw;
+}
+
+.t-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prompt-name {
+    animation: promptName 8s;
+    font-size: 9vh;
+    opacity: 100%;
+}
+
+.form-prompt {
+    align-self: start;
+    transform: translateX(-24vw);
+}
+
+.form-prompt h2 {
+    padding-top: 5vh;
+    padding-bottom: 2vh;
+}
+
+input {
+    transform: translateX(5vw);
+    animation: promptName 8s;
+    justify-self: left;
+    width: 30vw;
+    height: 5vh;
+}
+
+ul {
+    list-style-type: none;
+    margin-bottom: 2vh;
+    padding: 2vh 3vw;
+}
+
+li {
+    float: left;
+    display: block;
+}
+
+#name2 {
+    float: right;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.v-container {
+    background-color: black;
+    /* background: transparent; */
+    width:100vw;
+    height: 94vh;
+}
+
+.v-container-container {
+    background: black;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 2vw;
+}
+
+.v-container-container div {
+    background-color: black;
+    background: black;
+    padding: 0.5vw 3vw;
+
+}
+
+.v-container-container iframe {
+    border-radius: 15px;
+    background-color: black;
+    background: black;
+    border: none;
+    width: 40vw;
+    height: 40vh;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.v-container h1,h2,h3,h4,h5,h6,p {
+    font-family: 'Mona Sans Light';
+    font-weight: 100;
+    margin-left: 2vw;
+    padding-top: 3vh;
+    background: transparent;
+    margin-bottom: 3vh;
+}
+
+#Battle {
+    float: left;
+    animation: battleAnim 2s;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes title{
+    0% {
+        transform: translateX(15vw);
+        opacity: -20%;
+    }
+    60% {   
+        opacity: 100%;
+        transform: translateX(30vw);
+    }
+    100% {
+        transform: translateX(30vw);
+        opacity: 0%;
+    }
+}
+
+@keyframes promptName {
+    0% {
+        opacity: 0%;
+    }
+    70% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes battleAnim {
+    0% {
+        opacity: 0%;
+    }
+    50% {
+        opacity: 100%;
+    }
+    100% {
+        opacity: 0%;
+    }
+}
