@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<div id="rect" style="background: white; width: 100vw; height: 3vh;"></div>
+<body style="background: green;">
+    <div class="text-center" style="background: none; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <h1 style="background: none;">You Won!</h1>
+    <h2 id="wins-to-losses"></h2>
+    </div>
+</body>
+<script>
+    (function() {
+    var maxTime = 1000;
+    var diff = 0;
+    var timerRect = document.getElementById("rect");
+
+    var timer = setTimeout(function run() {
+        // console.log(maxTime - diff);
+        timerRect.setAttribute("style", "background: white; height: 3vh; width:"+(100*(maxTime-diff)/maxTime).toString()+"vw");
+        diff++;
+
+        if (maxTime - diff !== -1) {
+        timer = setTimeout(run, 1); // Call the 'run' function recursively after 1 second
+        }
+        else {
+            window.location.href="battleStart.html";
+        }
+    }, 1000);
+    })();
+    localStorage.setItem('wins', Number(localStorage.getItem('wins'))+1);
+
+    var score = document.getElementById("wins-to-losses");
+    score.innerHTML = localStorage.getItem("wins") + " - "+localStorage.getItem("lose");
+</script>
+</html>

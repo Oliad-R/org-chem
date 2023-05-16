@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../style.css">
+<head>
+  <title>Leaderboard</title>
+</head>
+<script>
+  var pN = localStorage.getItem("name");
+  var pS = Number(localStorage.getItem("points"));
+  var pT = parseFloat(localStorage.getItem('time'));
+  var pA = Number(localStorage.getItem('attempts'));
+  var pW2L = localStorage.getItem("wins") + "-" + localStorage.getItem("lose");
+  
+  const data = {
+    pName: pN,
+    pScore: pS,
+    pTime: pT,
+    pAttempt: pA,
+    pW2L: pW2L
+  };
+
+  fetch('/leaderboard', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Data sent successfully');
+      localStorage.setItem("lose", 0);
+      localStorage.setItem("wins", 0);
+      localStorage.setItem("time", 0);
+    } else {
+      console.log('Failed to send data');
+    }
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+  });
+</script>
+<body class="body">
+  <h1 class="l-title">Leaderboard</h1>
+  <table>
+    <tr class="header-row">
+      <th>Player Name</th>
+      <th>Player Score</th>
+      <th>Player Time</th>
+      <th>Attempt #</th>
+      <th>W-L Ratio</th>
+    </tr>
+    <tr class="space-row"></tr>
+    <% players.forEach(player => { %>
+      <tr class="player-row">
+        <td><%= player.pName %></td>
+        <td><%= player.pScore %></td>
+        <td><%= player.pTime.toString() %></td>
+        <td><%= player.pAttempt %></td>
+        <td><%= player.pW2L %></td>
+      </tr>
+      <tr class="space-row">
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

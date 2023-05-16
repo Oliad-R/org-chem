@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="../style.css">
+<head>
+  <title>Questions</title>
+</head>
+<!-- <script>
+  var pN = localStorage.getItem("name");
+  var pS = localStorage.getItem("points");
+  var pT = localStorage.getItem('name');
+  var pA = localStorage.getItem('attempts');
+  var pW2L = localStorage.getItem("wins") + "-"+localStorage.getItem("lose");
+  const data = {
+    pN,
+    pS,
+    pT,
+    pA,
+    pW2L,
+  };
+  fetch('/leaderboard', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+  })
+  .then((response) => {
+    if (response.ok) {
+      console.log('Data sent successfully');
+    } else {
+      console.log('Failed to send data');
+    }
+  })
+  .catch((error) => {
+    console.log('Error:', error);
+  });
+</script> -->
+<body class="body">
+  <h1 class="l-title">Questions</h1>
+  <table>
+    <tr class="header-row">
+      <th>Player Name</th>
+      <th>Player Score</th>
+      <th>Player Time</th>
+      <th>Attempt #</th>
+      <th>W-L Ratio</th>
+    </tr>
+    <tr class="space-row"></tr>
+    <% questions.forEach(question => { %>
+      <tr class="">
+        <td><%= question.qQuestion %></td>
+        <td><%= question.qRightAnswer %></td>
+        <td><%= question.qWrongAnswers.toString() %></td>
+        <td><%= question.qPoints.toString() %></td>
+      </tr>
+      <tr class="space-row">
+      </tr>
+    <% }); %>
+  </table>
+</body>
+</html>

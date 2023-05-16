@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="rect" style="width: 100vw; height: 3vh; background: rgb(0, 255, 0);;"></div>
+    <div class="centering">
+        <h1>What are the main functional groups of dopamine?</h1>
+        <h2 id="wins-to-losses"></h2>
+    </div>
+    <div class="col-1">
+    <div id="a1" class="answer-btns"></div>
+    <div id="a2" class="answer-btns"></div>
+    </div>
+    <div class="col-2">
+    <div id="a3" class="answer-btns"></div>
+    <div id="a4" class="answer-btns"></div>
+    </div>
+    
+</body>
+<script>
+    var a1 = document.getElementById("a1");
+    var a2 = document.getElementById("a2");
+    var a3 = document.getElementById("a3");
+    var a4 = document.getElementById("a4");
+    /* Assume Schema as Question(String correctAnswer, Array wrongAnswers, Number pointsWorth)*/
+
+    // function onBtnClick() {
+    // if (Quiz.question.correctAnswer.equals(a1.innerHTML)){
+    //     localStorage.setItem('points', Number(localStorage.getItem('points'))+1);
+    //     window.location.href = "win.html";
+    // }
+    // else {
+    //     window.location.href="lost.html";
+    // }
+    // }
+    if(localStorage.getItem('wins')>=10){
+        window.location.href="/leaderboard";
+    }
+    var score = document.getElementById("wins-to-losses");
+    score.innerHTML = localStorage.getItem("wins") + " - "+localStorage.getItem("lose");
+    localStorage.setItem('attempts', Number(localStorage.getItem('attempts'))+1);
+    var timer;
+    (function() {
+    var maxTime = 6000;
+    var diff = 0;
+    var timerRect = document.getElementById("rect");
+
+    var timer = setTimeout(function run() {
+        // console.log(maxTime - diff);
+        timerRect.setAttribute("style", "background: rgb("+((255-(100*(maxTime-diff)/maxTime)).toString()+", "+255*(maxTime-diff)/maxTime).toString()+","+" 0); height: 3vh; width:"+(100*(maxTime-diff)/maxTime).toString()+"vw");
+        diff++;
+
+        if (maxTime - diff !== -1) {
+        timer = setTimeout(run, 1); // Call the 'run' function recursively after 1 second
+        }
+        else {
+            window.location.href="lost.html";
+        }
+    }, 1000);
+    })();
+
+    // if(localStorage.getItem('points'));
+</script>
+</html>

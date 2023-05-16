@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    
+    <img src="icon.PNG" class="ic">
     <title>Organic Chemistry</title>
 </head>
 <body>
@@ -13,8 +13,8 @@
     <h1 class="t">Organic Chemistry</h1>
     <form action="" method="post" class="form-prompt" id="fp">
     <div>
-        <h2 class="prompt-name">What's your name?</h2>
-        <input autocomplete="name" id="name1" type="text" style="font-family: 'Mona-Sans Light';">
+        <h2 class="prompt-name" style="font-family: 'Mona-Sans'; font-weight: 400;">What's your name?</h2>
+        <input required="true" autocomplete="name" id="name1" type="text">
     </div>
 </form>
     </div>
@@ -22,10 +22,23 @@
 
 <script>
     const form = document.getElementById("fp");
+
+    /**
+     * pName,
+    pScore,
+    pTime,
+    pAttempt,
+    pW2L, 
+     */
     
-    if(localStorage.getItem("name")==null){
+    if(localStorage.getItem("name")==null || localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare(' ')==0 || localStorage.getItem("name").localeCompare('  ')==0 || localStorage.getItem("name").localeCompare('   ')==0){
         var name = localStorage.setItem('name', '');
         var points = localStorage.setItem('points', 0);
+        var attempts = localStorage.setItem('attempts', 0);
+        var loses = localStorage.setItem('lose',0);
+        var wins = localStorage.setItem('wins', 0);
+        var time = localStorage.setItem('time',0);
+
     }
     else {
         console.log(localStorage.getItem('name'));
@@ -35,6 +48,10 @@
         e.preventDefault();
         localStorage.setItem('name', document.getElementById('name1').value);
         localStorage.setItem('points',0);
+        localStorage.setItem('attempts',0);
+        localStorage.setItem('lose',0);
+        localStorage.setItem('wins', 0);
+        localStorage.setItem('time',0);
         console.log(localStorage.getItem('name'));
         window.location.href = "home-page.html";
     })

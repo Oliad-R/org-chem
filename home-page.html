@@ -10,12 +10,16 @@
 <body>
         <ul id="ulID">
             <li id="Battle"><a href="battle.html">Battle</a></li>
-            <li style="margin-left: 40vw;">Organic Chemistry</li>
+            <li id="org-chem-title">Organic Chemistry</li>
             <li id="name2">
             </li>
         </ul>
     <div class="v-container">
-        <h2>Available Videos</h2>
+        <h2 style="padding-bottom: 2vh; margin-left: 7vw;">Available Videos</h2>
+        <div id="prog-border">
+            <div id="progress-bar">
+            </div>
+        </div>
         <div class="v-container-container">
             <div>
                 <iframe 
@@ -49,9 +53,37 @@
     </div>
 </body>
 <script>
+    var player;
+    var maxPoints = 100;
+
+    // function onYoutubeIframeAPIReady() {
+    //     player = new YT.Player('video-placeholder', {
+    //         width: 600,
+    //         height: 400,
+    //         videoID: 
+    //     }
+    //     )
+
+    document.getElementById("progress-bar").setAttribute('style', "width: "+(100*Number(localStorage.getItem('points'))/maxPoints)+"%; height: 2vh; background-color: lightgreen;");
     document.getElementById("name2").innerHTML = localStorage.getItem('name') + ": "+localStorage.getItem('points');
     if(localStorage.getItem("name")==null){
         window.location.href = "index.html";
     }
+    else if (localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare(' ')==0 || localStorage.getItem("name").localeCompare('  ')==0 || localStorage.getItem("name").localeCompare('   ')==0){
+        window.location.href = "index.html";
+    }
+    var videoElement = document.getElementById("myvideo");
+    var totalTimePlayed = 0;
+    var lastUpdatedTime = 0;
+    videoElement.addEventListener("timeupdate", function(event) {
+    var newTime = videoElement.currentTime;
+    var timeDiff = newTime - lastUpdatedTime;
+    if (timeDiff > 0) {
+        totalTimePlayed += timeDiff;
+        // feel free to do something else here
+        document.getElementById("video_counter").innerText = totalTimePlayed + " seconds played.";
+    }
+    lastUpdatedTime = newTime;
+    });
 </script>
 </html>

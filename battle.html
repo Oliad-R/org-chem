@@ -8,11 +8,37 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="t2-container">
+        <h1>Dopamine Quiz</h1>
+        <h3 id="t2-subtitle">Score 10 Points As Quick As Possible!</h3>
+        <h2 id="players"></h2>
+    </div>
+    <div class="stats">
+        <h2 id="attempts"></h2>
+        <h2 id="points"></h2>
+        <h2 id="percent-watched"></h2>
+    </div>
+    <div id="battleform">
+    <button type="submit" onclick=""><a href="battleStart.html">Click to Play</a></button>
+    </div>
 </body>
 <script>
     if(localStorage.getItem("name")==null){
         window.location.href = "index.html";
     }
+    function startBattle() {
+        window.location.href = "battleStart.html";
+        console.log("Reloaded");
+    }
+    var p = document.getElementById("players");
+    var pts = document.getElementById("points");
+    var atps = document.getElementById("attempts");
+    var watched = document.getElementById("percent-watched");
+    watched.innerHTML = (localStorage.getItem("points"))+"% Watched";
+    atps.innerHTML = "Attempt: "+localStorage.getItem("attempts");
+    pts.innerHTML = "Points: "+localStorage.getItem("points");
+    p.innerHTML = localStorage.getItem("name");
+
+
 </script>
 </html>
