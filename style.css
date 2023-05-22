@@ -209,8 +209,8 @@ a {
 }
 
 .stats h2 {
-    padding: 0 11vw;
-    padding-top: 5vh;
+    padding: 0 0vw;
+    padding-top: 3vh;
 }
 
 #battleform {
@@ -221,7 +221,7 @@ a {
 }
 
 #battleform button {
-    margin-top: 4vh;
+    margin-top: 1vh;
     background: black;
     border-radius: 10px;
     border: none;
@@ -246,6 +246,19 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.l-btn {
+    background: black;
+    border: none;
+    border-radius: 5px;
+    transform: translate(-44vw,-1.5vh);
+    padding: 0.5vh 0.5vw;
+}
+
+.l-btn:hover {
+    cursor: pointer;
+    background: green;
 }
 
 .l-title {
@@ -274,12 +287,9 @@ th, td {
     animation-fill-mode: forwards;
 }
 
-.player-row:nth-child(1) {animation-delay: 0.0s; }
-.player-row:nth-child(3) {animation-delay: 0.5s; }
-.player-row:nth-child(5) {animation-delay: 1.0s; }
-.player-row:nth-child(7) {animation-delay: 1.5s; }
-.player-row:nth-child(9) {animation-delay: 2.0s; }
-.player-row:nth-child(11) {animation-delay: 2.5s; }
+.player-saved-row {
+    background: green;
+}
 
 tr {
     background-color: #455c84;
@@ -293,7 +303,7 @@ tr {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .centering {
@@ -305,6 +315,9 @@ tr {
 }
 
 .answer-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 30vh;
     width: 30vw;
     background: black;
@@ -313,7 +326,7 @@ tr {
 }
 
 .answer-btns:hover {
-    background: white;
+    background: green;
     cursor: pointer;
 }
 
@@ -405,3 +418,65 @@ tr {
         opacity: 0;
     }
 }
+
+
+.player-row:nth-child(1) {animation-delay: 0.0s; }
+.player-row:nth-child(3) {animation-delay: 0.5s; }
+.player-row:nth-child(5) {animation-delay: 1.0s; }
+.player-row:nth-child(7) {animation-delay: 1.5s; }
+.player-row:nth-child(9) {animation-delay: 2.0s; }
+.player-row:nth-child(11) {animation-delay: 2.5s; }
+.player-row:nth-child(13) {animation-delay: 3.0s; }
+.player-row:nth-child(15) {animation-delay: 3.5s; }
+.player-row:nth-child(17) {animation-delay: 4.0s; }
+.player-row:nth-child(19) {animation-delay: 4.5s; }
+.player-row:nth-child(21) {animation-delay: 5.0s; }
+.player-row:nth-child(23) {animation-delay: 5.5s; }
+.player-row:nth-child(25) {animation-delay: 6.0s; }
+.player-row:nth-child(27) {animation-delay: 6.5s; }
+.player-row:nth-child(29) {animation-delay: 7.0s; }
+.player-row:nth-child(31) {animation-delay: 7.5s; }
+.player-row:nth-child(33) {animation-delay: 8.0s; }
+.player-row:nth-child(35) {animation-delay: 8.5s; }
+.player-row:nth-child(37) {animation-delay: 9.0s; }
+.player-row:nth-child(39) {animation-delay: 9.5s; }
+.player-row:nth-child(41) {animation-delay: 10.0s; }
+.player-row:nth-child(43) {animation-delay: 10.5s; }
+.player-row:nth-child(45) {animation-delay: 11.0s; }
+.player-row:nth-child(47) {animation-delay: 11.5s; }
+.player-row:nth-child(49) {animation-delay: 12.0s; }
+.player-row:nth-child(51) {animation-delay: 12.5s; }
+.player-row:nth-child(53) {animation-delay: 13.0s; }
+.player-row:nth-child(55) {animation-delay: 13.5s; }
+.player-row:nth-child(57) {animation-delay: 14.0s; }
+.player-row:nth-child(59) {animation-delay: 14.5s; }
+.player-row:nth-child(61) {animation-delay: 15.0s; }
+.player-row:nth-child(63) {animation-delay: 15.5s; }
+.player-row:nth-child(65) {animation-delay: 16.0s; }
+.player-row:nth-child(67) {animation-delay: 16.5s; }
+.player-row:nth-child(69) {animation-delay: 17.0s; }
+.player-row:nth-child(71) {animation-delay: 17.5s; }
+.player-row:nth-child(73) {animation-delay: 18.0s; }
+.player-row:nth-child(75) {animation-delay: 18.5s; }
+.player-row:nth-child(77) {animation-delay: 19.0s; }
+.player-row:nth-child(79) {animation-delay: 19.5s; }
+.player-row:nth-child(81) {animation-delay: 20.0s; }
+.player-row:nth-child(83) {animation-delay: 20.5s; }
+.player-row:nth-child(85) {animation-delay: 21.0s; }
+.player-row:nth-child(87) {animation-delay: 21.5s; }
+.player-row:nth-child(89) {animation-delay: 22.0s; }
+.player-row:nth-child(91) {animation-delay: 22.5s; }
+.player-row:nth-child(93) {animation-delay: 23.0s; }
+.player-row:nth-child(95) {animation-delay: 23.5s; }
+.player-row:nth-child(97) {animation-delay: 24.0s; }
+.player-row:nth-child(99) {animation-delay: 24.5s; }
+.player-row:nth-child(101) {animation-delay: 25.0s; }
+.player-row:nth-child(103) {animation-delay: 25.5s; }
+.player-row:nth-child(105) {animation-delay: 26.0s; }
+.player-row:nth-child(107) {animation-delay: 26.5s; }
+.player-row:nth-child(109) {animation-delay: 27.0s; }
+.player-row:nth-child(111) {animation-delay: 27.5s; }
+.player-row:nth-child(113) {animation-delay: 28.0s; }
+.player-row:nth-child(115) {animation-delay: 28.5s; }
+.player-row:nth-child(117) {animation-delay: 29.0s; }
+.player-row:nth-child(119) {animation-delay: 29.5s; }

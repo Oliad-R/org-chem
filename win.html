@@ -16,12 +16,11 @@
 </body>
 <script>
     (function() {
-    var maxTime = 1000;
+    var maxTime = 800;
     var diff = 0;
     var timerRect = document.getElementById("rect");
 
     var timer = setTimeout(function run() {
-        // console.log(maxTime - diff);
         timerRect.setAttribute("style", "background: white; height: 3vh; width:"+(100*(maxTime-diff)/maxTime).toString()+"vw");
         diff++;
 
@@ -29,12 +28,17 @@
         timer = setTimeout(run, 1); // Call the 'run' function recursively after 1 second
         }
         else {
-            window.location.href="battleStart.html";
+            window.location.href="/battle-start";
         }
     }, 1000);
     })();
     localStorage.setItem('wins', Number(localStorage.getItem('wins'))+1);
-
+    if (Number(localStorage.getItem("wins"))>=10){
+        window.location.href = "/leaderboard";
+    }
+    else if (localStorage.getItem("name")==null || localStorage.getItem("points")==null || localStorage.getItem("wins")==null || localStorage.getItem("lose")==null || localStorage.getItem("points")==null || localStorage.getItem("time")==null){
+        window.location.href = "index.html";
+    }
     var score = document.getElementById("wins-to-losses");
     score.innerHTML = localStorage.getItem("wins") + " - "+localStorage.getItem("lose");
 </script>

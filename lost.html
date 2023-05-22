@@ -13,17 +13,16 @@
     <h1 style="background: none;">You Lost!</h1>
     <h2 id="wins-to-losses"></h2>
     </div>
-
-
-    <button style="background: none" type="submit"><a href="battleStart.html">Continue</a></button>
 </body>
 <script>
+    if (localStorage.getItem("name")==null || localStorage.getItem("points")==null || localStorage.getItem("wins")==null || localStorage.getItem("lose")==null || localStorage.getItem("points")==null || localStorage.getItem("time")==null){
+        window.location.href = "index.html";
+    }
     localStorage.setItem('lose', Number(localStorage.getItem('lose'))+1);
-
     var score = document.getElementById("wins-to-losses");
     score.innerHTML = localStorage.getItem("wins") + " - "+localStorage.getItem("lose");
     (function() {
-    var maxTime = 2000;
+    var maxTime = 800;
     var diff = 0;
     var timerRect = document.getElementById("rect");
 
@@ -36,7 +35,7 @@
         timer = setTimeout(run, 1); // Call the 'run' function recursively after 1 second
         }
         else {
-            window.location.href="battleStart.html";
+            window.location.href="/battle-start";
         }
     }, 1000);
     })();

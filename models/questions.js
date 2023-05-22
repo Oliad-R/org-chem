@@ -11,7 +11,7 @@ const questionSchema = new Schema({
         type: String,
         required: true
     },
-    qWrongAnswers: {
+    qAnswers: {
         type:Array,
         required: true,
     },

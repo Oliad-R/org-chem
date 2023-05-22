@@ -5,11 +5,22 @@
   <title>Leaderboard</title>
 </head>
 <script>
+  if (localStorage.getItem("name")==null){
+    window.location.href = "index.html";
+  }
+  else if(Number(localStorage.getItem("wins")) < 10){
+    window.location.href = "/battle-start";
+  }
+  else {
   var pN = localStorage.getItem("name");
   var pS = Number(localStorage.getItem("points"));
   var pT = parseFloat(localStorage.getItem('time'));
   var pA = Number(localStorage.getItem('attempts'));
   var pW2L = localStorage.getItem("wins") + "-" + localStorage.getItem("lose");
+
+  localStorage.setItem("lose", 0);
+  localStorage.setItem("wins", 0);
+  localStorage.setItem("time", 0);
   
   const data = {
     pName: pN,
@@ -18,30 +29,31 @@
     pAttempt: pA,
     pW2L: pW2L
   };
-
-  fetch('/leaderboard', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then((response) => {
-    if (response.ok) {
-      console.log('Data sent successfully');
-      localStorage.setItem("lose", 0);
-      localStorage.setItem("wins", 0);
-      localStorage.setItem("time", 0);
-    } else {
-      console.log('Failed to send data');
-    }
-  })
-  .catch((error) => {
-    console.log('Error:', error);
-  });
+  
+    fetch('/leaderboard', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then((response) => {
+      if (response.ok) {
+        console.log('Data sent successfully');
+        localStorage.setItem("postCounter", Number(localStorage.getItem("postCounter"))+1);
+      } else {
+        console.log('Failed to send data');
+      }
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+    }); 
+};
 </script>
 <body class="body">
+  <button class="l-btn" onclick="window.location.href='home-page.html'">Return Home</button>
   <h1 class="l-title">Leaderboard</h1>
+  <div id="leaderboard-container">
   <table>
     <tr class="header-row">
       <th>Player Name</th>
@@ -51,11 +63,19 @@
       <th>W-L Ratio</th>
     </tr>
     <tr class="space-row"></tr>
+    <tr class="player-saved-row">
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+        <td id="td5"></td>
+    </tr>
+    <tr class="space-row"></tr>
     <% players.forEach(player => { %>
       <tr class="player-row">
         <td><%= player.pName %></td>
         <td><%= player.pScore %></td>
-        <td><%= player.pTime.toString() %></td>
+        <td><%= player.pTime ? player.pTime.toString() : '' %></td>
         <td><%= player.pAttempt %></td>
         <td><%= player.pW2L %></td>
       </tr>
@@ -63,5 +83,14 @@
       </tr>
     <% }); %>
   </table>
+  </div>
+  <script>
+    document.getElementById("td1").innerHTML = pN;
+    document.getElementById("td2").innerHTML = pS.toString();
+    document.getElementById("td3").innerHTML = pT.toString();
+    document.getElementById("td4").innerHTML = pA.toString();
+    document.getElementById("td5").innerHTML = pW2L;
+
+  </script>
 </body>
 </html>

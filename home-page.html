@@ -9,7 +9,7 @@
 </head>
 <body>
         <ul id="ulID">
-            <li id="Battle"><a href="battle.html">Battle</a></li>
+            <li id="Battle"><a id="Battle-Link" href="battle.html">Battle</a></li>
             <li id="org-chem-title">Organic Chemistry</li>
             <li id="name2">
             </li>
@@ -54,7 +54,7 @@
 </body>
 <script>
     var player;
-    var maxPoints = 100;
+    var maxPoints = 2000;
 
     // function onYoutubeIframeAPIReady() {
     //     player = new YT.Player('video-placeholder', {
@@ -64,9 +64,14 @@
     //     }
     //     )
 
+    if (localStorage.getItem("points") < 2000){
+        document.getElementById("Battle").setAttribute("style", "height: 0.000001vh;");
+        document.getElementById("org-chem-title").setAttribute("style", "margin-left: 41.5vw; float: left;");
+        document.getElementById("Battle-Link").setAttribute("style", "opacity: 0%;");
+    }
     document.getElementById("progress-bar").setAttribute('style', "width: "+(100*Number(localStorage.getItem('points'))/maxPoints)+"%; height: 2vh; background-color: lightgreen;");
     document.getElementById("name2").innerHTML = localStorage.getItem('name') + ": "+localStorage.getItem('points');
-    if(localStorage.getItem("name")==null){
+    if (localStorage.getItem("name")==null || localStorage.getItem("points")==null || localStorage.getItem("wins")==null || localStorage.getItem("lose")==null || localStorage.getItem("points")==null || localStorage.getItem("time")==null){
         window.location.href = "index.html";
     }
     else if (localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare(' ')==0 || localStorage.getItem("name").localeCompare('  ')==0 || localStorage.getItem("name").localeCompare('   ')==0){
