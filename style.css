@@ -1,3 +1,13 @@
+@font-face{
+    font-family: "Mona-Sans";
+    src: url(OTF/Mona-Sans-SemiBold.otf);
+}
+
+@font-face {
+    font-family: "Mona-Sans Light";
+    src: url(OTF/Mona-Sans-UltraLight.otf);
+}
+
 *{
     background-color: #092A65;
     font-family: 'Mona-Sans';
@@ -64,7 +74,7 @@ html::-webkit-scrollbar-track {
 }
 
 #name1 {
-    transform: translateX(5vw);
+    width: 100%;
     animation: promptName 8s;
     justify-self: left;
     outline: none;
@@ -72,7 +82,6 @@ html::-webkit-scrollbar-track {
     border-left: none;
     border-top: none;
     font-size: 4vh;
-    width: 30vw;
     height: 5vh;
 }
 
