@@ -4,92 +4,184 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.youtube.com/iframe_api"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="icon2.png">
     <title>Home</title>
 </head>
 <body>
-        <ul id="ulID">
-            <li id="Battle"><a id="Battle-Link" href="battle.html">Battle</a></li>
-            <li id="org-chem-title">Organic Chemistry</li>
-            <li id="name2">
-            </li>
-        </ul>
+    <ul id="ulID">
+        <li id="Battle"><a id="Battle-Link" href="battle.html">Battle</a></li>
+        <li id="org-chem-title">Organic Chemistry</li>
+        <li id="name2"></li>
+    </ul>
     <div class="v-container">
         <h2 style="padding-bottom: 2vh; margin-left: 7vw;">Available Videos</h2>
         <div id="prog-border">
-            <div id="progress-bar">
-            </div>
+            <div id="progress-bar"></div>
         </div>
         <div class="v-container-container">
-            <div>
+            <div id="p-container">
                 <iframe 
                     width="400" 
                     height="400" 
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                    src="">
                 </iframe>
             </div>
-            <div>
+            <div id="p1-container">
                 <iframe 
                     width="600" 
                     height="400" 
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                    src="">
                 </iframe>
             </div>
-            <div>
+            <div id="p2-container">
                 <iframe 
                     width="600" 
                     height="400" 
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                    src="">
                 </iframe>
             </div>
-            <div>
+            <div id="p3-container">
                 <iframe 
                     width="600" 
-                    height="400" 
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1">
+                    height="400"
+                    src="">
                 </iframe>
             </div>
         </div>
     </div>
+    <script>
+        var furthestLength1 = localStorage.getItem("f1");
+        var furthestLength2 = localStorage.getItem("f2");
+        var furthestLength3 = localStorage.getItem("f3");
+        var furthestLength4 = localStorage.getItem("f4");
+
+        videoLength = 1271;
+
+        function updatePointsAndProgressBar() {
+            var points = Number(localStorage.getItem('points'));
+            var progressBar = document.getElementById("progress-bar");
+            var name2 = document.getElementById("name2");
+            var battle = document.getElementById("Battle");
+            var orgChemTitle = document.getElementById("org-chem-title");
+            var battleLink = document.getElementById("Battle-Link");
+            
+            progressBar.style.width = (100 * points / maxPoints) + "%";
+            name2.innerHTML = localStorage.getItem('name') + ": " + Math.floor(points);
+            
+            // Check if points reach or exceed maxPoints
+            if (points >= maxPoints) {
+                // Remove CSS changes
+                battle.style.height = "";
+                orgChemTitle.style.marginLeft = "";
+                orgChemTitle.style.float = "";
+                battleLink.style.opacity = "";
+            } else {
+                // Apply CSS changes
+                battle.style.height = "0.000001vh";
+                orgChemTitle.style.marginLeft = "41.5vw";
+                orgChemTitle.style.float = "left";
+                battleLink.style.opacity = "0%";
+            }
+        }
+            // document.getElementById("progress-bar").style.width = (100 * Number(localStorage.getItem('points')) / maxPoints) + "%";
+            // document.getElementById("name2").innerHTML = localStorage.getItem('name') + ": " + (Math.floor(Number(localStorage.getItem('points'))));
+
+        function onYouTubeIframeAPIReady() {
+            var player = new YT.Player('p-container', {
+                videoId: '8IPSiUeDOJY',
+                events: {
+                    onStateChange: onPlayerStateChange
+                }
+            });
+            var player = new YT.Player('p1-container', {
+                videoId: '8IPSiUeDOJY',
+                events: {
+                    onStateChange: onPlayerStateChange
+                }
+            });
+            var player = new YT.Player('p2-container', {
+                videoId: '8IPSiUeDOJY',
+                events: {
+                    onStateChange: onPlayerStateChange
+                }
+            });
+            var player = new YT.Player('p3-container', {
+                videoId: '8IPSiUeDOJY',
+                events: {
+                    onStateChange: onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerStateChange(event) {
+            var playerID = event.target.getIframe().id;
+            var currentTime = event.target.getCurrentTime();
+    
+            if (event.data == YT.PlayerState.PLAYING) {
+                switch (playerID) {
+                case 'p-container':
+                    if (currentTime > furthestLength1) {
+                    furthestLength1 = currentTime;
+                    localStorage.setItem("f1", furthestLength1);
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength1 / videoLength));
+                    updatePointsAndProgressBar();
+                    }
+                    break;
+                case 'p1-container':
+                    if (currentTime > furthestLength2) {
+                    furthestLength2 = currentTime;
+                    localStorage.setItem("f2", furthestLength2);
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength2 / videoLength));
+                    updatePointsAndProgressBar();
+                    }
+                    break;
+                case 'p2-container':
+                    if (currentTime > furthestLength3) {
+                    furthestLength3 = currentTime;
+                    localStorage.setItem("f3", furthestLength3);
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength3 / videoLength));
+                    updatePointsAndProgressBar();
+                    }
+                    break;
+                case 'p3-container':
+                    if (currentTime > furthestLength4) {
+                    furthestLength4 = currentTime;
+                    localStorage.setItem("f4", furthestLength4);
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength4 / videoLength));
+                    updatePointsAndProgressBar();
+                    }
+                    break;
+                }
+                
+                // Log the furthest lengths for each player
+                console.log('Furthest Length 1:', furthestLength1);
+                console.log('Furthest Length 2:', furthestLength2);
+                console.log('Furthest Length 3:', furthestLength3);
+                console.log('Furthest Length 4:', furthestLength4);
+                
+                console.log('Points:', localStorage.getItem("points"));
+            }
+        }
+    </script>
+    <script>
+        var player;
+        var maxPoints = 2000;
+        if (localStorage.getItem("name")==null || localStorage.getItem("points")==null || localStorage.getItem("wins")==null || localStorage.getItem("lose")==null || localStorage.getItem("points")==null || localStorage.getItem("time")==null){
+            window.location.href = "index.html";
+        }
+        else if (localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare(' ')==0 || localStorage.getItem("name").localeCompare('  ')==0 || localStorage.getItem("name").localeCompare('   ')==0){
+            window.location.href = "index.html";
+        }
+        if (localStorage.getItem("points") < 2000){
+            document.getElementById("Battle").setAttribute("style", "height: 0.000001vh;");
+            document.getElementById("org-chem-title").setAttribute("style", "margin-left: 41.5vw; float: left;");
+            document.getElementById("Battle-Link").setAttribute("style", "opacity: 0%;");
+        }
+        document.getElementById("progress-bar").setAttribute('style', "width: "+(100*Number(localStorage.getItem('points'))/maxPoints)+"%; height: 2vh; background-color: lightgreen;");
+        document.getElementById("name2").innerHTML = localStorage.getItem('name') + ": "+(Math.floor(Number(localStorage.getItem('points'))));
+        onYouTubeIframeAPIReady();
+    </script>
 </body>
-<script>
-    var player;
-    var maxPoints = 2000;
-
-    // function onYoutubeIframeAPIReady() {
-    //     player = new YT.Player('video-placeholder', {
-    //         width: 600,
-    //         height: 400,
-    //         videoID: 
-    //     }
-    //     )
-
-    if (localStorage.getItem("points") < 2000){
-        document.getElementById("Battle").setAttribute("style", "height: 0.000001vh;");
-        document.getElementById("org-chem-title").setAttribute("style", "margin-left: 41.5vw; float: left;");
-        document.getElementById("Battle-Link").setAttribute("style", "opacity: 0%;");
-    }
-    document.getElementById("progress-bar").setAttribute('style', "width: "+(100*Number(localStorage.getItem('points'))/maxPoints)+"%; height: 2vh; background-color: lightgreen;");
-    document.getElementById("name2").innerHTML = localStorage.getItem('name') + ": "+localStorage.getItem('points');
-    if (localStorage.getItem("name")==null || localStorage.getItem("points")==null || localStorage.getItem("wins")==null || localStorage.getItem("lose")==null || localStorage.getItem("points")==null || localStorage.getItem("time")==null){
-        window.location.href = "index.html";
-    }
-    else if (localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare(' ')==0 || localStorage.getItem("name").localeCompare('  ')==0 || localStorage.getItem("name").localeCompare('   ')==0){
-        window.location.href = "index.html";
-    }
-    var videoElement = document.getElementById("myvideo");
-    var totalTimePlayed = 0;
-    var lastUpdatedTime = 0;
-    videoElement.addEventListener("timeupdate", function(event) {
-    var newTime = videoElement.currentTime;
-    var timeDiff = newTime - lastUpdatedTime;
-    if (timeDiff > 0) {
-        totalTimePlayed += timeDiff;
-        // feel free to do something else here
-        document.getElementById("video_counter").innerText = totalTimePlayed + " seconds played.";
-    }
-    lastUpdatedTime = newTime;
-    });
-</script>
 </html>

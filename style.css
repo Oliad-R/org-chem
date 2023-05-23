@@ -110,9 +110,9 @@ li {
 
 .v-container {
     background-color: black;
-    /* background: transparent; */
     width:100vw;
-    height: 110vh;
+    overflow: hidden;
+    height: 115vh;
 }
 
 .v-container-container {
@@ -126,10 +126,6 @@ li {
 
 .v-container-container div {
     background-color: black;
-    /* border-width: 1vw;
-    border-radius: 10px;
-    border-color: black;
-    border-style: solid; */
     background: black;
     padding: 3vh 2vw;
 }
@@ -138,13 +134,14 @@ li {
     border-width: 1vw;
     border-radius: 10px;
     border-color: black;
+    margin: 2.6vh;
     border-style: solid;
     animation-direction: reverse;
     animation: hoverAnim 1s;
     background: black;
     border: none;
     width: 40vw;
-    height: 40vh;
+    height: 46vh;
 }
 
 .v-container-container iframe:hover {
@@ -193,7 +190,6 @@ a {
     align-items: center;
     font-size: 6vh;
     padding-top: 4vh;
-    /* height: 50vh; */
 }
 
 .t2-container h1 {

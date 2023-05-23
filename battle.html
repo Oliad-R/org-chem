@@ -34,7 +34,7 @@
     // var watched = document.getElementById("percent-watched");
     // watched.innerHTML = ((100*Number(localStorage.getItem('points'))/maxPoints))+"% Watched";
     atps.innerHTML = "Attempt: "+localStorage.getItem("attempts");
-    pts.innerHTML = "Points: "+localStorage.getItem("points");
+    pts.innerHTML = "Points: "+Math.floor(localStorage.getItem("points"));
     p.innerHTML = localStorage.getItem("name");
 
     function onClick(){

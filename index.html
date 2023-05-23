@@ -24,14 +24,6 @@
 <script>
     const form = document.getElementById("fp");
 
-    /**
-     * pName,
-    pScore,
-    pTime,
-    pAttempt,
-    pW2L, 
-     */
-    
     if(localStorage.getItem("name")==null || localStorage.getItem("name").localeCompare('')==0 || localStorage.getItem("name").localeCompare(' ')==0 || localStorage.getItem("name").localeCompare('  ')==0 || localStorage.getItem("name").localeCompare('   ')==0){
         var name = localStorage.setItem('name', '');
         var points = localStorage.setItem('points', 0);
@@ -39,7 +31,10 @@
         var loses = localStorage.setItem('lose',0);
         var wins = localStorage.setItem('wins', 0);
         var time = localStorage.setItem('time',0);
-
+        localStorage.setItem("f1", 0);
+        localStorage.setItem("f2", 0);
+        localStorage.setItem("f3", 0);
+        localStorage.setItem("f4", 0);
     }
     else {
         console.log(localStorage.getItem('name'));
@@ -53,6 +48,10 @@
         localStorage.setItem('lose',0);
         localStorage.setItem('wins', 0);
         localStorage.setItem('time',0);
+        localStorage.setItem("f1", 0);
+        localStorage.setItem("f2", 0);
+        localStorage.setItem("f3", 0);
+        localStorage.setItem("f4", 0);
         console.log(localStorage.getItem('name'));
         window.location.href = "home-page.html";
     })

@@ -2,6 +2,7 @@
 <html>
 <link rel="stylesheet" href="../style.css">
 <head>
+  <link rel="icon" href="icon2.png">
   <title>Leaderboard</title>
 </head>
 <script>
@@ -9,11 +10,11 @@
     window.location.href = "index.html";
   }
   else if(Number(localStorage.getItem("wins")) < 10){
-    window.location.href = "/battle-start";
+    window.location.href = "home-page.html";
   }
   else {
   var pN = localStorage.getItem("name");
-  var pS = Number(localStorage.getItem("points"));
+  var pS = Math.floor(Number(localStorage.getItem("points")));
   var pT = parseFloat(localStorage.getItem('time'));
   var pA = Number(localStorage.getItem('attempts'));
   var pW2L = localStorage.getItem("wins") + "-" + localStorage.getItem("lose");
@@ -90,7 +91,6 @@
     document.getElementById("td3").innerHTML = pT.toString();
     document.getElementById("td4").innerHTML = pA.toString();
     document.getElementById("td5").innerHTML = pW2L;
-
   </script>
 </body>
 </html>
