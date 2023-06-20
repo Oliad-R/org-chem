@@ -57,7 +57,9 @@
         var furthestLength3 = localStorage.getItem("f3");
         var furthestLength4 = localStorage.getItem("f4");
 
-        videoLength = 1271;
+        videoLength = 180;
+        videoLength2 = 420;
+        videoLength3 = 660;
 
         function updatePointsAndProgressBar() {
             var points = Number(localStorage.getItem('points'));
@@ -90,25 +92,25 @@
 
         function onYouTubeIframeAPIReady() {
             var player = new YT.Player('p-container', {
-                videoId: '8IPSiUeDOJY',
+                videoId: '8uMlgzjmwS0',
                 events: {
                     onStateChange: onPlayerStateChange
                 }
             });
             var player = new YT.Player('p1-container', {
-                videoId: '8IPSiUeDOJY',
+                videoId: 'wC2SjcH8LeA',
                 events: {
                     onStateChange: onPlayerStateChange
                 }
             });
             var player = new YT.Player('p2-container', {
-                videoId: '8IPSiUeDOJY',
+                videoId: 'aEVhljZCwV0',
                 events: {
                     onStateChange: onPlayerStateChange
                 }
             });
             var player = new YT.Player('p3-container', {
-                videoId: '8IPSiUeDOJY',
+                videoId: 'eNlyxVU04gc',
                 events: {
                     onStateChange: onPlayerStateChange
                 }
@@ -133,7 +135,7 @@
                     if (currentTime > furthestLength2) {
                     furthestLength2 = currentTime;
                     localStorage.setItem("f2", furthestLength2);
-                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength2 / videoLength));
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength2 / videoLength2));
                     updatePointsAndProgressBar();
                     }
                     break;
@@ -141,7 +143,7 @@
                     if (currentTime > furthestLength3) {
                     furthestLength3 = currentTime;
                     localStorage.setItem("f3", furthestLength3);
-                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength3 / videoLength));
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength3 / videoLength3));
                     updatePointsAndProgressBar();
                     }
                     break;
@@ -149,7 +151,7 @@
                     if (currentTime > furthestLength4) {
                     furthestLength4 = currentTime;
                     localStorage.setItem("f4", furthestLength4);
-                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength4 / videoLength));
+                    localStorage.setItem("points", (Number(localStorage.getItem("points"))) + maxPoints * 0.25 * (furthestLength4 / videoLength2));
                     updatePointsAndProgressBar();
                     }
                     break;
@@ -167,7 +169,7 @@
     </script>
     <script>
         var player;
-        var maxPoints = 2000;
+        var maxPoints = 8800;
         if (localStorage.getItem("name")==null || localStorage.getItem("points")==null || localStorage.getItem("wins")==null || localStorage.getItem("lose")==null || localStorage.getItem("points")==null || localStorage.getItem("time")==null){
             window.location.href = "index.html";
         }

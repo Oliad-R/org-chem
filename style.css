@@ -156,8 +156,6 @@ a {
 }
 
 .v-container h1,h2,h3,h4,h5,h6,p {
-    font-family: 'Mona Sans';
-    font-weight: 100;
     margin-left: 2vw;
     padding-top: 3vh;
     background: transparent;
@@ -200,7 +198,6 @@ a {
 #t2-subtitle {
     animation: battleAnim 2s;
     animation-iteration-count: infinite;
-    font-family: 'Mona-Sans';
     transform: translateY(-1vh);
     font-weight: 500;
 }
